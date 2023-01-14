@@ -52,7 +52,7 @@ Verifying the potentials.
     - Late
         - Loosely
 
-### Names
+### Scopes
 - Unit
 - Surface
 - System
