@@ -2,7 +2,7 @@
 
 ## Arranging
 
-Organizing a focused purpose.
+Expressing a purpose.
 
 ### Functionalization
 - Formation (Forms some substance)
@@ -20,7 +20,7 @@ Organizing a focused purpose.
 
 ## Conditioning
 
-Vacating a focused purpose.
+Handling the exceptional.
 
 ### Typification
 - Pointer
@@ -38,7 +38,7 @@ Vacating a focused purpose.
 
 ## Testing
 
-Verifying a focused purpose.
+Verifying the potentials.
 
 ### Modes
 - Integrated
