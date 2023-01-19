@@ -2,14 +2,14 @@
 
 ## Arranging
 
-Expressing a purpose.
+Expressing progression.
 
 ### Functionalization
-- Formation (Forms some substance)
+- Formation
     - Construction (constructor [type return], calculator, getter)
     - Articulation (constructor [func return])
     - Modifcation  (setter, reconstructor [type return])
-- Relation (Relays some behavior)
+- Relation
     - Exposition   (handler)
     - Junction     (multiplexer, demultiplexer)
     - Seclusion    (combiner/subhandler)
@@ -20,12 +20,13 @@ Expressing a purpose.
 
 ## Conditioning
 
-Handling the exceptional.
+Expressing digression.
 
 ### Typification
 - Pointer
 - Enums
-- Special meaning
+- Bit shifted integers (rwx)
+- Special meaning integers (-1)
 
 ### Disjunction
 - Error (XOR Value)
@@ -38,19 +39,21 @@ Handling the exceptional.
 
 ## Testing
 
-Verifying the potentials.
+Verifying congression.
 
 ### Modes
+- Expected
+    - Mutually
+    - Externally
+    - Internally
 - Integrated
-    - Fully
+    - Thoroughly
     - Partially
     - Minimally
 - Pinned
-    - Early
-        - Tightly
-        - Loosely
-    - Late
-        - Loosely
+    - Tightly
+    - Moderately
+    - Loosely
 
 ### Scopes
 - Unit
