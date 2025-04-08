@@ -5,14 +5,17 @@
 Expressing progression.
 
 ### Functionalization
-- Formation
-    - Construction (constructor [type return], calculator, getter)
-    - Articulation (constructor [func return])
-    - Modifcation  (setter, reconstructor [type return])
-- Relation
-    - Exposition   (handler)
-    - Junction     (multiplexer, demultiplexer)
-    - Seclusion    (combiner/subhandler)
+- Formation of Values
+    - Construction   (constructor [type return], calculator, getter)
+    - Articulation   (constructor [func return])
+    - Modification   (setter, reconstructor [type return])
+- Relation of Behavior
+    - Exposition     (handler)
+    - Junction       (multiplexer, demultiplexer)
+    - Seclusion      (combiner/subhandler)
+- Notation of Attributes
+    - Identification (marker [no return])
+    - Elucidation    (getter [static return]) 
 
 ### Structuratlization
 - Formalization     (data model)
