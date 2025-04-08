@@ -17,13 +17,11 @@ Expressing progression.
     - Identification (discriminator [no return])
     - Elucidation    (getter [static return])
 
-#### Examples
+#### Formation of Values (Examples)
 
-##### Formation of Values
+##### Construction
 
-###### Construction
-
-####### Constructor
+###### Constructor
 
 ```go
 type App struct {
@@ -35,7 +33,7 @@ func NewApp(name string) *App {
 }
 ```
 
-####### Calculator
+###### Calculator
 
 ```go
 func add(a, b int) int {
@@ -43,7 +41,7 @@ func add(a, b int) int {
 }
 ```
 
-####### Getter
+###### Getter
 
 ```go
 type App struct {
@@ -63,9 +61,9 @@ func Greeting(a *App) string { // with processing
 }
 ```
 
-###### Articulation
+##### Articulation
 
-####### Constructor
+###### Constructor
 
 ```go
 func Accumulation(initVal int) func(addend int) int {
@@ -76,9 +74,9 @@ func Accumulation(initVal int) func(addend int) int {
 }
 ```
 
-###### Modification
+##### Modification
 
-####### Setter
+###### Setter
 
 ```go
 type App struct {
@@ -91,11 +89,11 @@ func SetName(a App, name string) App {
 }
 ```
 
-##### Relation of Behavior
+#### Relation of Behavior (Examples)
 
-###### Exposition
+##### Exposition
 
-####### Handler
+###### Handler
 
 ```go
 func HandleHello(w http.ResponseWriter, r *http.Request) {
@@ -108,9 +106,9 @@ func HandleHello(w http.ResponseWriter, r *http.Request) {
 }
 ```
 
-###### Junction
+##### Junction
 
-####### Multiplexer
+###### Multiplexer
 
 ```go
 func RouteHandling(data []byte) error {
@@ -125,9 +123,9 @@ func RouteHandling(data []byte) error {
 }
 ```
 
-###### Seclusion
+##### Seclusion
 
-####### Subhandler
+###### Subhandler
 
 ```go
 func HandleHello(w http.ResponseWriter, r *http.Request) {
@@ -141,11 +139,11 @@ func PrintHello(w http.ResponseWriter, r *http.Request) {
 }
 ```
 
-##### Notation of Attributes
+#### Notation of Attributes (Examples)
 
-###### Identification
+##### Identification
 
-####### Discriminator
+###### Discriminator
 
 ```go
 type ExitError struct {
@@ -157,7 +155,7 @@ type ExitError struct {
 func (e *ExitError) Silent() {} // presence conveys type attribute
 ```
 
-###### Elucidation
+##### Elucidation
 
 ```go
 type ExitError struct {
