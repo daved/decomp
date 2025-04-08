@@ -14,7 +14,7 @@ Expressing progression.
     - Junction       (multiplexer, demultiplexer)
     - Seclusion      (combiner/subhandler)
 - Notation of Attributes
-    - Identification (marker [no return])
+    - Identification (discriminator [no return])
     - Elucidation    (getter [static return]) 
 
 ### Structuratlization
