@@ -6,16 +6,16 @@ Expressing progression.
 
 ### Functionalization
 - Formation of Values
-    - Construction   (constructor [type return], calculator, getter)
-    - Articulation   (constructor [func return])
+    - Construction   (constructor, calculator, getter [dynamic value])
+    - Articulation   (closure)
     - Modification   (setter)
 - Relation of Behavior
     - Exposition     (handler)
     - Junction       (multiplexer)
     - Seclusion      (subhandler)
 - Notation of Attributes
-    - Identification (discriminator [no return])
-    - Elucidation    (getter [static return])
+    - Identification (discriminator [no/irrelevant value])
+    - Elucidation    (getter [static value])
 
 #### Formation of Values (Examples)
 
@@ -48,7 +48,7 @@ type App struct {
 	Name string
 }
 
-func Name(a *App) string { // no processing
+func Name(a *App) string { // without processing
 	return a.Name
 }
 
