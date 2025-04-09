@@ -171,7 +171,7 @@ func (e *ExitError) IsSilent() { // value conveys type attribute
 }
 ```
 
-### Structuratlization
+### Structuralization
 - Formalization of Data
     - Inscription       (direct model)
     - Stylization       (abstract model)
@@ -203,7 +203,7 @@ type DBDetails struct {
 	DSN    string
 }
 
-func NewDBDetails(host string, port int, user, pass string) *DBaseDSN {
+func NewDBDetails(host string, port int, user, pass string) *DBDetails {
 	return &DBDetails{
 		Driver: "postgres",
 		DSN: fmt.Sprintf("host=%s port=%d user=%s password=%s", host, port, user, pass),
@@ -240,8 +240,8 @@ Expressing digression.
 ### Typification
 - Pointer
 - Enums
-- Bit shifted integers (rwx)
-- Special meaning integers (-1)
+- Bit-shifted Integers (rwx)
+- Special Meaning Integers (-1)
 
 #### Examples
 
@@ -267,7 +267,7 @@ func main() {
 	}
 ```
 
-##### Bit Shifted Integers
+##### Bit-shifted Integers
 
 ```go
 const (
