@@ -219,17 +219,17 @@ func NewDBDetails(host string, port int, user, pass string) *DBaseDSN {
 
 ```go
 type App struct {
-	db     *sql.DB
+	db *sql.DB
 }
 
 func NewApp(db *sql.DB) *App {
-    return &App{
-        db:     db,
-    }
+	return &App{
+		db: db,
+	}
 }
 
 func (a *App) PingDB() error {
-    return a.db.Ping()
+	return a.db.Ping()
 }
 ```
 
