@@ -129,7 +129,7 @@ func RouteHandling(data []byte) error {
 
 ```go
 func HandleHello(w http.ResponseWriter, r *http.Request) {
-    // other behavior ...
+	// other behavior ...
 	PrintHello(w, r)
 }
 
@@ -172,8 +172,66 @@ func (e *ExitError) IsSilent() { // value conveys type attribute
 ```
 
 ### Structuratlization
-- Formalization     (data model)
-- Contextualization (scope bond)
+- Formalization of Data
+    - Inscription       (direct model)
+    - Stylization       (abstract model)
+- Association of Types
+    - Contextualization (dependencies)
+
+#### Formalization of Data (Examples)
+
+##### Inscription
+
+###### Direct Model
+
+```go
+type ConfigFile struct {
+	DBHost string
+	DBPort int
+	DBUser string
+	DBPass string
+}
+```
+
+##### Stylization
+
+###### Abstract Model
+
+```go
+type DBDetails struct {
+	Driver string
+	DSN    string
+}
+
+func NewDBDetails(host string, port int, user, pass string) *DBaseDSN {
+	return &DBDetails{
+		Driver: "postgres",
+		DSN: fmt.Sprintf("host=%s port=%d user=%s password=%s", host, port, user, pass),
+	}
+}
+```
+
+#### Association of Types (Examples)
+
+##### Contextualization
+
+###### Dependencies
+
+```go
+type App struct {
+	db     *sql.DB
+}
+
+func NewApp(db *sql.DB) *App {
+    return &App{
+        db:     db,
+    }
+}
+
+func (a *App) PingDB() error {
+    return a.db.Ping()
+}
+```
 
 ## Conditioning
 
