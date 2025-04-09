@@ -1,4 +1,4 @@
-# Current Notes:
+# Decomp
 
 ## Arranging
 
@@ -243,14 +243,121 @@ Expressing digression.
 - Bit shifted integers (rwx)
 - Special meaning integers (-1)
 
+#### Examples
+
+##### Pointer
+
+```go
+func main() {
+	a := app.New(creds)
+	if a == nil {
+		log.Fatalln("app was not constructed properly")
+	}
+	a.Run()
+}
+```
+
+##### Enums
+
+```go
+func main() {
+	status := app.Run(creds)
+	if status == app.Error || status == app.Unknown {
+		log.Fatalf("app was not constructed: %s\n", status)
+	}
+```
+
+##### Bit Shifted Integers
+
+```go
+const (
+	SuccessOne = 1 << iota // 1 (0b01)
+	SuccessTwo             // 2 (0b10)
+)
+
+func main() {
+	result := run(creds)
+	if result&SuccessOne != 0 {
+		fmt.Println("One succeeded")
+	} else {
+		fmt.Println("Failed to complete One")
+	}
+	if result&SuccessTwo != 0 {
+		fmt.Println("Two succeeded")
+	} else {
+		fmt.Println("Failed to complete Two")
+	}
+}
+```
+
+##### Special Meaning Integers
+
+```go
+func main() {
+	i := strings.Index("hello", "x")
+	fmt.Println(i)                   // Output: -1
+}
+```
+
 ### Disjunction
-- Error (XOR Value)
-    - Token (simple, "is")
-    - Behavior (complex, "as")
+- Error [XOR Value]
+    - Token [simple, "is"]
+    - Behavior [complex, "as"]
+
+#### Error [XOR Value] (Examples)
+
+##### Token [simple, "is"]
+
+```go
+func main() {
+	r := strings.NewReader("")
+	b := make([]byte, 1)
+	_, err := r.Read(b)
+	if errors.Is(err, io.EOF) {
+		fmt.Println("End of input")
+	}
+}
+```
+
+##### Behavior [complex, "as"]
+
+```go
+func main() {
+	_, err := net.Dial("tcp", "invalid:host")
+	var opErr *net.OpError
+	if errors.As(err, &opErr) {
+		fmt.Println("Network operation failed:", opErr.Op)
+	}
+}
+```
 
 ### Resignation
 - Panic
 - Abrupt return
+
+#### Examples
+
+##### Panic
+
+```go
+func divideBy(n, d int) int {
+	if d == 0 {
+		panic("division by zero")
+	}
+	return n / d
+}
+```
+
+##### Abrupt return
+
+```go
+func greet(name string) {
+	if name == "" {
+		return
+	}
+	fmt.Printf("Hello, %s\n", name)
+}
+```
 
 ## Testing
 
