@@ -157,6 +157,8 @@ func (e *ExitError) Silent() {} // presence conveys type attribute
 
 ##### Elucidation
 
+###### Getter
+
 ```go
 type ExitError struct {
 	Code int
