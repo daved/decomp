@@ -1,10 +1,15 @@
-# Decomp
+# Decomp: Modular, Maintainable, Testable Code
+
+The most common primitive used to express behavior is the function, yet we do not have nomenclature for decomposing functions when they grow unwieldy, whether that be technically or semantically. It may seem unimportant to dig into the whys of functions and data structures. However, we name complex patterns like Singleton and Bridge. We also formalize paradigms like Functional Programming with rigorous math. This easily missed void is one we can, and should, address. This document is intended to kick-off a common language for code decomposition with the hope of realizing a sharper engineering mindset in software development.
+
+Decomposing code involves breaking down behavior and data into the most relevant and purposeful elements. Composing code involves integrating those well-decomposed elements minimally and effectively. The following "categories of purpose" provide practical, adaptable guidelines through clear, structured naming. They cover arranging behavior and data, conditioning desired control flows with error handling, and testing source code.
 
 ## Arranging
 
-Expressing progression.
+Here we cover how functions and types (i.e. behavior and data) can be broken down to their smallest elements.
 
 ### Functionalization
+
 - Formation of Values
     - Construction   (constructor, calculator, getter [dynamic value])
     - Articulation   (closure)
@@ -172,6 +177,7 @@ func (e *ExitError) IsSilent() { // value conveys type attribute
 ```
 
 ### Structuralization
+
 - Formalization of Data
     - Inscription       (direct model)
     - Stylization       (abstract model)
@@ -235,9 +241,10 @@ func (a *App) PingDB() error {
 
 ## Conditioning
 
-Expressing digression.
+Here we cover how values can be used to indicate when our desired control flow must be turned from so that some error condition can be handled.
 
 ### Typification
+
 - Pointer
 - Enums
 - Bit-shifted Integers (rwx)
@@ -300,6 +307,7 @@ func main() {
 ```
 
 ### Disjunction
+
 - Error [XOR Value]
     - Token [simple, "is"]
     - Behavior [complex, "as"]
@@ -332,6 +340,7 @@ func main() {
 ```
 
 ### Resignation
+
 - Panic
 - Abrupt return
 
@@ -361,9 +370,16 @@ func greet(name string) {
 
 ## Testing
 
-Verifying congression.
+Here we cover how tests can be bound by expectations, and relationships existing in the targeted functions and types.
+
+### Scopes
+
+- Unit    (function)
+- Surface (API - object, package/module, etc.)
+- System  (system/artifact)
 
 ### Modes
+
 - Expected
     - Mutually
     - Externally
@@ -372,12 +388,3 @@ Verifying congression.
     - Thoroughly
     - Partially
     - Minimally
-- Pinned
-    - Tightly
-    - Moderately
-    - Loosely
-
-### Scopes
-- Unit
-- Surface
-- System
