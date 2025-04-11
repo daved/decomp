@@ -22,7 +22,7 @@ Here we cover how functions and types (i.e. behavior and data) can be broken dow
     - Identification (discriminator [no/irrelevant value])
     - Elucidation    (getter [static value])
 
-#### Formation of Values (Examples)
+#### Formation of Values: Examples
 
 ##### Construction
 
@@ -94,7 +94,7 @@ func SetName(a App, name string) App {
 }
 ```
 
-#### Relation of Behavior (Examples)
+#### Relation of Behavior: Examples
 
 ##### Exposition
 
@@ -144,7 +144,7 @@ func PrintHello(w http.ResponseWriter, r *http.Request) {
 }
 ```
 
-#### Notation of Attributes (Examples)
+#### Notation of Attributes: Examples
 
 ##### Identification
 
@@ -184,7 +184,7 @@ func (e *ExitError) IsSilent() { // value conveys type attribute
 - Association of Types
     - Contextualization (dependencies)
 
-#### Formalization of Data (Examples)
+#### Formalization of Data: Examples
 
 ##### Inscription
 
@@ -217,7 +217,7 @@ func NewDBDetails(host string, port int, user, pass string) *DBDetails {
 }
 ```
 
-#### Association of Types (Examples)
+#### Association of Types: Examples
 
 ##### Contextualization
 
@@ -245,9 +245,9 @@ Here we cover how values can be used to indicate when our desired control flow m
 
 ### Typification
 
-- Pointer
-- Enums
-- Bit-shifted Integers (rwx)
+- Pointer                  (nil/null)
+- Enums                    (token)
+- Bit-shifted Integers     (rwx)
 - Special Meaning Integers (-1)
 
 #### Examples
@@ -308,13 +308,13 @@ func main() {
 
 ### Disjunction
 
-- Error [XOR Value]
-    - Token [simple, "is"]
-    - Behavior [complex, "as"]
+- Error (XOR Value)
+    - Token (simple, "is")
+    - Behavior (complex, "as")
 
-#### Error [XOR Value] (Examples)
+#### Error (XOR Value): Examples
 
-##### Token [simple, "is"]
+##### Token (simple, "is")
 
 ```go
 func main() {
@@ -327,7 +327,7 @@ func main() {
 }
 ```
 
-##### Behavior [complex, "as"]
+##### Behavior (complex, "as")
 
 ```go
 func main() {
