@@ -370,7 +370,7 @@ func greet(name string) {
 
 ## Testing
 
-Here we cover how tests can be bound by expectations, and relationships existing in the targeted functions and types.
+Here we cover how tests can be bound by relationships, scope, and expectations associated with the targeted functions and types.
 
 ### Scopes
 
@@ -378,13 +378,33 @@ Here we cover how tests can be bound by expectations, and relationships existing
 - Surface (API - object, package/module, etc.)
 - System  (system/artifact)
 
-### Modes
+#### Unit Testing
 
+Ideally, unit testing should be limited to highly focused pure functions. Pure functions are functions that have no side-effects (i.e. no external state is changed), and always return the same output for the same input. However, for the sake of pragmatism, rather than disqualifying a test from being a unit test because it is not "ideal", it is helpful to prioritize the intention of a function and its testing. Using this lens, we can then simply acknowledge deviations for the sake of communication and comprehension and avoid unprofitable arguments about technical boundaries. 
+
+#### Surface Testing
+
+Expanding out from unit testing, surface tests begin to embrace the integration of multiple types, functions, and/or primitives. This happens naturally due to how we engage with more interesting "shapes" like object API surfaces, package/module API surfaces, and substantially complex functions. This is especially true as our perspective shifts from "maintainer who holds secret knowledge" of some portion of code and towards "user who is limited to the docs".
+
+#### System Testing
+
+Expanding, again, from surface testing, system tests bring us nearly fully to an external perspective. These tests tend to be established by product/user/customer expectations rather than those of internal developers. To a certain degree, this is where "nothing is sacred" and no secret knowledge should be allowed. This is as close to the real world as it can get without it being in the real world.
+
+### Modes of Intention
+
+By asking ourselves where some thing we are testing fits in the following categories, we can minimize the amount of tests and the sprawl of tests that do seem justified.
+
+- Integrated
+    - Intrinsically
+    - Practically
+    - Marginally
+- Secluded
+    - Optimally
+    - Fractionally
+    - Nominally
 - Expected
     - Mutually
     - Externally
     - Internally
-- Integrated
-    - Thoroughly
-    - Partially
-    - Minimally
+
+Initially, it may seem like "Integrated" and "Secluded" are somewhat redundant. An example that shows that they are not would be when a test is intended to be focused on a single unit, but, for pragmatic reasons, that unit happens to access environment variables. We would say that the test is "marginally integrated", yet it is "fractionally secluded". By having and coming to terms with these things, we can more easily focus on the true goals of software testing. 
