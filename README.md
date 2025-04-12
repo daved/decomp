@@ -4,7 +4,7 @@ The most common primitive used to express behavior is the function, yet we do no
 
 Decomposing code involves breaking down behavior and data into the most relevant and purposeful elements. Composing code involves integrating those well-decomposed elements minimally and effectively. The following "categories of purpose" provide practical, adaptable guidelines through clear, structured naming. They cover arranging behavior and data, conditioning desired control flows with error handling, and testing source code.
 
-## Arranging
+## Arranging Behavior and Data: Categories of Purpose
 
 Here we cover how functions and types (i.e. behavior and data) can be broken down to their smallest elements.
 
@@ -26,6 +26,8 @@ Here we cover how functions and types (i.e. behavior and data) can be broken dow
 
 ##### Construction
 
+Constructions construct values whether that be by instantiation, calculation, or inspection/derivation.
+
 ###### Constructor
 
 ```go
@@ -33,7 +35,7 @@ type App struct {
 	Name string
 }
 
-func NewApp(name string) *App {
+func NewApp(name string) *App { // instantiation
 	return &App{Name: name}
 }
 ```
@@ -41,7 +43,7 @@ func NewApp(name string) *App {
 ###### Calculator
 
 ```go
-func add(a, b int) int {
+func add(a, b int) int { // calculation
 	return a+b
 }
 ```
@@ -53,11 +55,11 @@ type App struct {
 	Name string
 }
 
-func Name(a *App) string { // without processing
+func Name(a *App) string { // inspection
 	return a.Name
 }
 
-func Greeting(a *App) string { // with processing
+func Greeting(a *App) string { // derivation
 	name := a.Name
 	if name == "" {
 		name = "App"
@@ -68,11 +70,13 @@ func Greeting(a *App) string { // with processing
 
 ##### Articulation
 
-###### Constructor
+Articulations construct scopes that are expanded (inclusion) and/or make a "change in direction" in the control flow (diversion).
+
+###### Closure
 
 ```go
-func Accumulation(initVal int) func(addend int) int {
-	return func(a int) int {
+func Accumulation(initVal int) func(addend int) int { // instantiation
+	return func(a int) int { // diversion with inclusion
 		initVal += a
 		return initVal
 	}
@@ -81,16 +85,23 @@ func Accumulation(initVal int) func(addend int) int {
 
 ##### Modification
 
+Modifications apply a mutation to some value (whether apparent or actual).
+
 ###### Setter
 
 ```go
 type App struct {
-	name string
+	name  string
+	start int
 }
 
-func SetName(a App, name string) App {
+func AppSetName(a App, name string) App { // apparent mutation (copy-based)
 	a.name = name
 	return a
+}
+
+func SetAppName(a *App, name string) { // actual mutation (reference-based)
+	a.name = name
 }
 ```
 
@@ -98,10 +109,12 @@ func SetName(a App, name string) App {
 
 ##### Exposition
 
+Expositions convey behaviors through invocation of other code.
+
 ###### Handler
 
 ```go
-func HandleHello(w http.ResponseWriter, r *http.Request) {
+func HandleHello(w http.ResponseWriter, r *http.Request) { // invocation
 	if !isAuthorized(r) {
 		http.Error(w, "Unauthorized", http.StatusUnauthorized)
 		return
@@ -113,10 +126,12 @@ func HandleHello(w http.ResponseWriter, r *http.Request) {
 
 ##### Junction
 
+Junctions inspect one ore more values in order to determine control flow resolution.
+
 ###### Multiplexer
 
 ```go
-func RouteHandling(data []byte) error {
+func RouteHandling(data []byte) error { // resolution
 	switch {
 	case bytes.HasPrefix(data, []byte{0xAA, 0xCC}):
 		return handleAlpha(data)
@@ -130,15 +145,17 @@ func RouteHandling(data []byte) error {
 
 ##### Seclusion
 
+Seclusions group invocational code into smaller pieces for the sake of organization. This may be for cleanliness of calling code, testability, reusability, etc.
+
 ###### Subhandler
 
 ```go
-func HandleHello(w http.ResponseWriter, r *http.Request) {
+func HandleHello(w http.ResponseWriter, r *http.Request) { // handler performing its invocation(s)
 	// other behavior ...
 	PrintHello(w, r)
 }
 
-func PrintHello(w http.ResponseWriter, r *http.Request) {
+func PrintHello(w http.ResponseWriter, r *http.Request) { // isolation
 	name := nameFromRequest(r)
 	fmt.Fprintf(w, "Hello, %s!", name)
 }
@@ -147,6 +164,8 @@ func PrintHello(w http.ResponseWriter, r *http.Request) {
 #### Notation of Attributes: Examples
 
 ##### Identification
+
+Identifcations help shape types for differentiation as a form of metadata and usually have no interesting behavior.
 
 ###### Discriminator
 
@@ -157,10 +176,12 @@ type ExitError struct {
 
 // other methods...
 
-func (e *ExitError) Silent() {} // presence conveys type attribute
+func (e *ExitError) Silent() {} // presence permits differentiation
 ```
 
 ##### Elucidation
+
+Elucidations offer values (typically static) for clarification as a form of metadata and usually have no interesting behavior.
 
 ###### Getter
 
@@ -171,7 +192,7 @@ type ExitError struct {
 
 // other methods...
 
-func (e *ExitError) IsSilent() { // value conveys type attribute
+func (e *ExitError) IsSilent() bool { // value permits clarification
 	return false
 }
 ```
