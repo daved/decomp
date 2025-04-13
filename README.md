@@ -209,6 +209,8 @@ func (e *ExitError) IsSilent() bool { // value permits clarification
 
 ##### Inscription
 
+Inscriptions are types that are minimally abstracted from their fundamental information. Behaviors associated with them tend to be restricted to transmission/translation (e.g. serialization).
+
 ###### Direct Model
 
 ```go
@@ -221,6 +223,8 @@ type ConfigFile struct {
 ```
 
 ##### Stylization
+
+Stylizations are types that are abstracted from their fundamental information. Behaviors associated with them tend to be based on developer preference/convenience (i.e. application needs).
 
 ###### Abstract Model
 
@@ -241,6 +245,8 @@ func NewDBDetails(host string, port int, user, pass string) *DBDetails {
 #### Association of Types: Examples
 
 ##### Contextualization
+
+Contextualizations focus solely on application organization. Specifically, these types carry dependencies down into the application's deeper layers so that more magical solutions like globals or dependency injection containers are not necessary.
 
 ###### Dependencies
 
